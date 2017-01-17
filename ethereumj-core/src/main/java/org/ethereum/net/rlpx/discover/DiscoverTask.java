@@ -56,6 +56,10 @@ public class DiscoverTask implements Runnable {
             List<Node> closest = nodeManager.getTable().getClosestNodes(nodeId);
             List<Node> tried = new ArrayList<>();
 
+            int cn = closest == null ? 0: closest.size();
+
+            logger.info("--------> Closest nodes: "+ cn);
+
             for (Node n : closest) {
                 if (!tried.contains(n) && !prevTried.contains(n)) {
                     try {
