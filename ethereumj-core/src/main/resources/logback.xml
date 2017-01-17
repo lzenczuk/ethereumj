@@ -68,7 +68,7 @@
     <logger name="rlp" level="ERROR"/>
     <logger name="java.nio" level="ERROR"/>
     <logger name="io.netty" level="ERROR"/>
-    <logger name="discover" level="DEBUG"/>
+    <logger name="discover" level="TRACE"/>
     <logger name="hsqldb.db" level="ERROR"/>
 
 
