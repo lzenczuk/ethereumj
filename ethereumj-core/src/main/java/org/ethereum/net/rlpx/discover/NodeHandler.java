@@ -30,6 +30,9 @@ public class NodeHandler {
     private void logMessage(Message msg, boolean inbound) {
         String s = String.format("%s[%s (%s)] %s", inbound ? " ===>  " : "<===  ", msg.getClass().getSimpleName(),
                 msg.getPacket().length, this);
+
+        logger.debug(s);
+
         if (msgInCount > 1024) {
             logger.trace(s);
         } else {
@@ -230,6 +233,7 @@ public class NodeHandler {
     }
 
     void handleFindNode(FindNodeMessage msg) {
+        logger.info("----------> handle find node: "+msg);
         logMessage(msg, true);
 //        logMessage(" ===> [FIND_NODE] " + this);
         getNodeStatistics().discoverInFind.add();
@@ -305,6 +309,7 @@ public class NodeHandler {
 
     void sendFindNode(byte[] target) {
 //        logMessage("<===  [FIND_NODE] " + this);
+        logger.info("----------> send find node to: "+Hex.toHexString(target));
         Message findNode = FindNodeMessage.create(target, nodeManager.key);
         logMessage(findNode, false);
         sendMessage(findNode);

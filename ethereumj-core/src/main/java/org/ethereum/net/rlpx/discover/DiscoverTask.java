@@ -12,10 +12,12 @@ import org.ethereum.net.rlpx.discover.table.NodeEntry;
 import org.ethereum.net.rlpx.discover.table.NodeTable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.spongycastle.util.encoders.Hex;
 
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DiscoverTask implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger("discover");
@@ -35,6 +37,8 @@ public class DiscoverTask implements Runnable {
     }
 
     public synchronized void discover(byte[] nodeId, int round, List<Node> prevTried) {
+
+        logger.info("--------> Run discovery task: "+ Hex.toHexString(nodeId));
 
         try {
 //        if (!channel.isOpen() || round == KademliaOptions.MAX_STEPS) {

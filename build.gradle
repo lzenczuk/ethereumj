@@ -28,6 +28,9 @@ subprojects {
 
     version = config.versionNumber + ("master" == gitCurBranch() ? "-RELEASE" : "-SNAPSHOT")
 
+    targetCompatibility = '1.8'
+    sourceCompatibility = '1.8'
+
     println("Building version: " + version + " (from branch " + gitCurBranch() + ")")
 
     compileJava.options.encoding = 'UTF-8'
